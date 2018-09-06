@@ -28,7 +28,8 @@ class USERSERVICE(APISERVICE):
         if uid_list:
             query = '&'.join(['uid={0}'.format(uid) for uid in uid_list])
             url = '/users/?{0}'.format(query)
-            response = self.send_request(url, requests.get)
+            url = self.get_full_url(url)
+            response = requests.get(url)
             return response.json()['results']
         return []
 
@@ -40,6 +41,7 @@ class USERSERVICE(APISERVICE):
             query.append('username={0}'.format(username))
         if query:
             url = '/users/?{0}'.format('&'.join(query))
-            response = self.send_request(url, requests.get)
+            url = self.get_full_url(url)
+            response = requests.get(url)
             return response.json()['results'][0]
         return []

@@ -33,6 +33,9 @@ class APISERVICE(GENERICSERVICE):
             version=self.API_VERSION,
             service=self.__class__.__name__.lower())
 
+    def get_full_url(self, sub_url):
+        return self.get_base_url() + sub_url
+
     def send_request(self, sub_url, method=requests.get):
         url = self.get_base_url() + sub_url
         return method(url)
