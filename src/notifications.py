@@ -11,6 +11,7 @@ class NOTIFICATIONS(APISERVICE):
     PORT = 8000
     API_VERSION = 'v1'
 
+    @staticmethod
     def generate_params(**kwargs):
         return json.dumps(kwargs)
 
