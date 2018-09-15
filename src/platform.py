@@ -12,6 +12,6 @@ class PLATFORM(APISERVICE):
 
     def get_platform_root_key(self, uid):
         resp = requests.get(self.get_full_url('/internal/'), cookies={
-            'uid': uid
+            'uid': str(uid)
         })
         return resp.json()
