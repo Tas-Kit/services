@@ -37,6 +37,9 @@ class NOTIFICATIONS(APISERVICE):
                 'params': params
             }
             url = self.get_full_url('/internal/')
-            response = requests.post(url, data=data)
-            return response.json()
+            try:
+                response = requests.post(url, data=data)
+                return response.json()
+            except Exception as e:
+                print(e)
         return {}
